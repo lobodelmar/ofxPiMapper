@@ -141,6 +141,9 @@ void ofxPiMapper::togglePauseForSurface(unsigned int i){
 	if(s->getType() == ofx::piMapper::SourceType::SOURCE_TYPE_VIDEO){
 		s->togglePause();
 	}
+    else if (s->getType() == ofx::piMapper::SourceType::SOURCE_TYPE_FBO){
+        s->togglePause();
+    }
 }
 
 void ofxPiMapper::togglePause(){

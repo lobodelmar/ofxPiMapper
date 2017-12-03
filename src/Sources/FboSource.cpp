@@ -10,6 +10,7 @@ FboSource::FboSource(){
 	loaded = false;
 	type = SourceType::SOURCE_TYPE_FBO;
 	_disableDraw = false;
+    _disableUpdate = false;
 }
 
 FboSource::~FboSource(){
@@ -21,7 +22,10 @@ void FboSource::updateFbo(){
 		ofLogWarning("FboSource") << "FBO not allocated";
 		return;
 	}
-	update();
+    if (_disableUpdate){
+        return;
+    }
+    update();
 }
 
 void FboSource::drawFbo(){
@@ -66,6 +70,10 @@ void FboSource::clear(){
 		delete fbo;
 		fbo = 0;
 	}
+}
+
+void FboSource::togglePause(){
+    _disableUpdate = !_disableUpdate;
 }
 
 int FboSource::getWidth(){

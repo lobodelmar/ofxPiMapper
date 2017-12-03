@@ -26,7 +26,9 @@ class FboSource : public BaseSource {
 		// And the user would have to allocate the fbo himself?
 		void updateFbo();
 		void drawFbo();
-	
+
+        void togglePause();
+
 		// The only method from BaseSource to be overriden
 		void clear();
 
@@ -42,6 +44,7 @@ class FboSource : public BaseSource {
 		int getHeight();
 	
 		bool _disableDraw;
+        bool _disableUpdate;
 };
 
 } // namespace piMapper
